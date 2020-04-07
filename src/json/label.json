@@ -1,0 +1,51 @@
+{
+  "item": [
+    {
+      "type": "Label",
+      "data": [
+        {
+          "id": "label",
+          "value": "我是label",
+          "x": "100px",
+          "y": "10px",
+          "width": "80px",
+          "height": "20px",
+          "lineHeight": "20px",
+          "color": "red",
+          "border": "1px solid red",
+          "textAlign": "left"
+        },
+        {
+          "id": "label2",
+          "value": "我是label2",
+          "x": "100px",
+          "y": "100px",
+          "width": "80px",
+          "height": "20px",
+          "lineHeight": "20px",
+          "color": "green",
+          "border": "1px solid green",
+          "textAlign": "right"
+        }
+      ]
+    },
+    {
+      "type": "Button",
+      "data": [
+        {
+          "id": "button",
+          "value": "我是button",
+          "x": "200px",
+          "y": "10px",
+          "width": "80px",
+          "height": "30px",
+          "color": "white",
+          "backgroundColor": "#409eff",
+          "lineHeight": "30px",
+          "border": "1px solid #409eff",
+          "borderRadius": "5px"
+        }
+      ]
+    }
+  ]
+}
