@@ -5,20 +5,28 @@
       <div class="right">
         <el-dropdown>
             <span class="el-dropdown-link">
-                切换<i class="el-icon-arrow-down el-icon--right"></i>
+                {{selected}}
+                <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>黄金糕</el-dropdown-item>
-                <el-dropdown-item>狮子头</el-dropdown-item>
-                <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                <el-dropdown-item
+                 v-for="(item,index) in selectData" 
+                 :key="index"
+                 @click.native="menuClick(item)"
+                >
+                    {{item.name}}
+                </el-dropdown-item>
+                <!-- <el-dropdown-item>狮子头</el-dropdown-item> -->
+                <!-- <el-dropdown-item>螺蛳粉</el-dropdown-item> -->
                 <!-- <el-dropdown-item disabled>双皮奶</el-dropdown-item> -->
                 <!-- <el-dropdown-item divided>蚵仔煎</el-dropdown-item> -->
-        </el-dropdown-menu>
+            </el-dropdown-menu>
         </el-dropdown>
         <img src="@/assets/logo.png">
-        <span>欢迎燕培浩</span>
+        <span>欢迎 燕培浩</span>
         <span>|</span>
-        <span style="cursor: pointer"><i class="el-icon-circle-close"></i> 退出</span>
+        <!-- <span style="cursor: pointer"></span> -->
+        <el-button type="text" @click="open"><i class="el-icon-circle-close"></i> 退出</el-button>
       </div>
     </div>
 </template>
@@ -30,6 +38,12 @@
     data(){
         return{
             input:'',
+            selected:'黄金糕',
+            selectData:[
+                {name:'黄金糕',id:'1'},
+                {name:'狮子头',id:'2'},
+                {name:'螺蛳粉',id:'3'},
+            ]
         }
     },
     computed: {
@@ -39,9 +53,28 @@
 
     },
     methods:{
-
+        menuClick(item){
+            console.log(item)
+            this.selected = item.name
+        },
+        open() {
+            this.$confirm('此操作将退出当前登录, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                this.$message({
+                    type: 'success',
+                    message: '退出成功!'
+                });
+            }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消'
+                });          
+            });
+        }
     },
-
   }
 
 </script>
@@ -106,5 +139,9 @@
     }
     .el-input >>> .el-input__inner{
         height: 30px !important;
+    }
+    .el-button--text{
+        color: #FFFFFF;
+        font-size: 16px;
     }
 </style>

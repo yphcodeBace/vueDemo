@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <vheader /> 
+    <vheader @click.native="headerClick" /> 
     <router-view/>
   </div>
 </template>
@@ -12,6 +12,11 @@
     components: {
       'vheader': Header
     },
+    methods:{
+      headerClick(){
+        console.log('headerCLick')
+      }
+    }
   }
 </script>
 

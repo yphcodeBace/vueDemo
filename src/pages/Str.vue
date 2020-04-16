@@ -86,8 +86,8 @@
       };
     },
     methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
+        submitForm(formName) {
+          this.$refs[formName].validate((valid) => {
             if (valid) {
               // alert('submit!');
               console.log(this.ruleForm2);
