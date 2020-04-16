@@ -21,7 +21,7 @@ axios.defaults.timeout = 10000;
 // axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Content-Type, accept';
 // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.headers.Authorization = 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoenloIiwiZXhwIjoxNTg2NzQ1MTIxLCJpYXQiOjE1ODU4ODExMjF9.e8iQSZp2vPoMyYq-qes-gDy6zoFclbZcbYOIH-RJxtXJek0L1ykz5Khd7xpnf_EmD-ODS9SmsT79kI_uM0_vaw';
+axios.defaults.headers.Authorization = 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoenloIiwiZXhwIjoxNTg3ODY4MDYwLCJpYXQiOjE1ODcwMDQwNjB9.VuKHNQuJx0C3hbbGu7WXqAz36VFqfAVekB7BGnROVrx8hJEOrpqdura9nTdrIGtXxznIakT2t2Pf7kHu4eU7Sg';
 
 // 请求拦截
 axios.interceptors.request.use( config => {

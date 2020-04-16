@@ -3,7 +3,7 @@
     name:<input v-model="name"></input>
     sex:<input v-model="sex"></input>
     <button @click="add">添加</button>
-    <p v-for="item in msg">
+    <p v-for="(item,index) in msg" :key="index">
       <span>{{item.name}}</span>
       <span>{{item.sex}}</span>
     </p>
