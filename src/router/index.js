@@ -5,6 +5,7 @@ import Index from '@/pages/Index'
 import Arr from '@/pages/Arr'
 import Str from '@/pages/Str'
 import Homestay from '@/pages/Homestay'
+import BFC from '@/pages/BFC'
 
 Vue.use(Router)
 
@@ -30,6 +31,10 @@ export default new Router({
       path: '/Homestay',
       name: 'Homestay',
       component: Homestay
+    },{
+      path: '/BFC',
+      name: 'BFC',
+      component: BFC
     }
   ]
 })

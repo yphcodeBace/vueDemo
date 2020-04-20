@@ -4,7 +4,7 @@
       'left':item.x,'top':item.y,'width':item.width,'height':item.height,'background-color':item.backgroundColor,
       'color':item.color,'border':item.border,'text-align':item.textAlign,
       'line-height':item.lineHeight,'border-radius':item.borderRadius
-    }" v-for="item in data">{{responseData.user.username}}</button>
+    }" v-for="(item,index) in data" :key="index">{{responseData.user.username}}</button>
   </div>
 </template>
 
