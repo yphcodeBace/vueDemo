@@ -56,7 +56,48 @@
         </div>
       </div>
       <div v-if="showRight" class="right">
-          
+        <div class="r-top">
+            <div :class="{'selected':this.selectText=='入住'}" @click="selected('入住')">入住</div>
+            <div :class="{'selected':this.selectText=='预定'}" @click="selected('预定')">预定</div>
+            <div :class="{'selected':this.selectText=='退房/续租'}" @click="selected('退房/续租')">退房/续租</div>
+        </div>
+        <div class="detailsTitle">
+            {{this.detailsTitle}}
+        </div>
+        <div style="overflow-y:scroll;height:700px">
+            <div class="r-list" v-for="(item,index) in rightListData" :key="index">
+                <div class="img-div">
+                    <img src="@/assets/images/dcf.jpg" alt="">
+                </div>
+                <div class="r-list-right">
+                    <div><span>{{item.num}}</span><span class="ml20">{{item.type}}</span></div>
+                    <div>{{item.details}}</div>
+                    <div><button class="xz">续住</button><button class="tf">退房</button></div>
+                </div>
+            </div>
+            <!-- <div class="r-list">
+                <div class="img-div">
+                    <img src="@/assets/images/dcf.jpg" alt="">
+                </div>
+                <div class="r-list-right">
+                    <div><span>101</span><span class="ml20">大床房</span></div>
+                    <div>张王两人</div>
+                    <div><button class="xz">续住</button><button class="tf">退房</button></div>
+                </div>
+            </div>
+            <div class="r-list">
+                <div class="img-div">
+                    <img src="@/assets/images/dcf.jpg" alt="">
+                </div>
+                <div class="r-list-right">
+                    <div><span>101</span><span class="ml20">大床房</span></div>
+                    <div>张王两人</div>
+                    <div><button class="xz">续住</button><button class="tf">退房</button></div>
+                </div>
+            </div> -->
+        </div>
+
+    
       </div>
   </div>
 </template>
@@ -67,6 +108,8 @@
         data () {
             return {
                 msg: 'Welcome to Your Vue.js App',
+                selectText:'退房/续租',
+                detailsTitle:'已入住房间',
                 pData:[
                     {name:'黄金糕3',id:'1'},
                     {name:'狮子头3',id:'2'},
@@ -96,7 +139,18 @@
                     {key:"yellow"},{key:"blue"},{key:"yellow"},{key:"yellow"},{key:"gray"},{key:"blue"},{key:"yellow"},{key:"blue"},
                     {key:"blue"},{key:"gray"},{key:"gray"},{key:"yellow"},{key:"blue"},{key:"gray"},{key:"yellow"},{key:"gray"},
                     {key:"yellow"},{key:"blue"},{key:"blue"},{key:"gray"},{key:"yellow"},{key:"yellow"},{key:"blue"},{key:"yellow"},
-                ]
+                ],
+                rightListData:[
+                    {type:'标准间',num:'301',details:'yan王两人',status:'退房/续住'},
+                    {type:'套房',num:'203',details:'yan王两人',status:'退房/续住'},
+                    {type:'大床房',num:'105',details:'yan王两人',status:'退房/续住'},
+                    {type:'套房',num:'104',details:'yan王两人',status:'退房/续住'},
+                    {type:'标准间',num:'103',details:'yan王两人',status:'退房/续住'},
+                    {type:'大床房',num:'301',details:'yan王两人',status:'退房/续住'},
+                    {type:'标准间',num:'201',details:'yan王两人',status:'退房/续住'},
+                    {type:'套房',num:'101',details:'yan王两人',status:'退房/续住'},
+                    {type:'标准间',num:'202',details:'yan王两人',status:'退房/续住'},
+                ],
             }
         },
         methods:{
@@ -111,6 +165,18 @@
                 }else{
                     this.arrowShow=true
                     this.showRight=true
+                }
+            },
+            selected(text){
+                if(text=='入住'){
+                    this.selectText = '入住';
+                    this.detailsTitle = '已入住房间';
+                }else if(text=='预定'){
+                    this.selectText = '预定';
+                    this.detailsTitle = '已预定房间';
+                }else{
+                    this.selectText = '退房/续租';
+                    this.detailsTitle = '已入住房间';
                 }
             }
         },
