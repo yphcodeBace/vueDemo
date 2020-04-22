@@ -6,6 +6,7 @@ import Arr from '@/pages/Arr'
 import Str from '@/pages/Str'
 import Homestay from '@/pages/Homestay'
 import BFC from '@/pages/BFC'
+import Video from '@/pages/Video'
 
 Vue.use(Router)
 
@@ -35,6 +36,10 @@ export default new Router({
       path: '/BFC',
       name: 'BFC',
       component: BFC
+    },{
+      path: '/Video',
+      name: 'Video',
+      component: Video
     }
   ]
 })
