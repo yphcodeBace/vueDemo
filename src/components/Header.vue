@@ -63,6 +63,9 @@
                     type: 'success',
                     message: '退出成功!'
                 });
+                this.$router.push({
+                    path:'/Login'
+                })
             }).catch(() => {
                 this.$message({
                     type: 'info',

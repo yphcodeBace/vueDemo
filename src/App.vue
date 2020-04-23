@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <vheader @click.native="headerClick" /> 
-    <router-view/>
+    <div v-if="$route.meta.keepAlive">
+      <vheader @click.native="headerClick" /> 
+      <router-view/>
+    </div>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
   </div>
 </template>
 
@@ -32,5 +35,6 @@
     text-align: center;
     color: #2c3e50;
     overflow-x: hidden;
+    height: 100vh;
   }
 </style>
