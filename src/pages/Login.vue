@@ -1,14 +1,21 @@
 <template>
   <div class="login">
-    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-        <el-form-item label="用户名" prop="username">
-            <el-input type="username" v-model="ruleForm.username" autocomplete="off"></el-input>
+    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" class="demo-ruleForm">
+        <el-form-item>
+            登陆Login
         </el-form-item>
-        <el-form-item label="密码" prop="pass">
-            <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+        <el-form-item prop="username">
+            <el-input type="username" placeholder="用户名" v-model="ruleForm.username" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item prop="pass">
+            <el-input type="password" placeholder="密码" v-model="ruleForm.pass" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item>
             <el-button type="primary" @click="submitForm('ruleForm')">登陆</el-button>
+            <!-- <el-button @click="resetForm('ruleForm')">重置</el-button> -->
+        </el-form-item>
+        <el-form-item>
+            <!-- <el-button type="primary" @click="submitForm('ruleForm')">登陆</el-button> -->
             <el-button @click="resetForm('ruleForm')">重置</el-button>
         </el-form-item>
     </el-form>
@@ -87,11 +94,21 @@
     .login >>> .el-form{
         /* border: 1px solid red; */
         width: 360px;
-        
         margin: auto;
-        margin-top: 25%;
+        margin-top: 20%;
     }
     .login >>> .el-form-item__label{
         color: #FFF;
+    }
+    .login >>> .el-button{
+        width: 100%;
+    }
+    .login >>> .el-form-item__content{
+        color: #FFF;
+        font-size: 32px;
+    }
+    .login >>> .el-input__inner{
+        color: #FFF;
+        background-color: transparent;
     }
 </style>
