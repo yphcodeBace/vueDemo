@@ -16,10 +16,6 @@
                 >
                     {{item.name}}
                 </el-dropdown-item>
-                <!-- <el-dropdown-item>狮子头</el-dropdown-item> -->
-                <!-- <el-dropdown-item>螺蛳粉</el-dropdown-item> -->
-                <!-- <el-dropdown-item disabled>双皮奶</el-dropdown-item> -->
-                <!-- <el-dropdown-item divided>蚵仔煎</el-dropdown-item> -->
             </el-dropdown-menu>
         </el-dropdown>
         <img src="@/assets/logo.png">
@@ -38,11 +34,11 @@
     data(){
         return{
             input:'',
-            selected:'黄金糕',
+            selected:'上海',
             selectData:[
-                {name:'黄金糕',id:'1'},
-                {name:'狮子头',id:'2'},
-                {name:'螺蛳粉',id:'3'},
+                {name:'上海',id:'1'},
+                {name:'北京',id:'2'},
+                {name:'广州',id:'3'},
             ]
         }
     },
@@ -54,7 +50,7 @@
     },
     methods:{
         menuClick(item){
-            console.log(item)
+            // console.log(item)
             this.selected = item.name
         },
         open() {

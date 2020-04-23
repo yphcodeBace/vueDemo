@@ -27,8 +27,8 @@
                 <div>房间异常6间</div>
             </div>
             <div class="fliter-r">
-                <el-input v-model="input" placeholder="输入房间号搜索"></el-input>
-                <el-select v-model="value" placeholder="请选择">
+                <el-input v-model="input" @input="inpChange" placeholder="输入房间号搜索"></el-input>
+                <el-select v-model="value" @change="selectChange" placeholder="请选择">
                     <el-option
                         v-for="item in options"
                         :key="item.value"
@@ -40,8 +40,8 @@
         </div>
         <!-- 房间列表 -->
         <div class="roomList">
-            <div v-for="(item,index) in roomListData" :key="index" :class="{ 'yellow-Div': item.key=='yellow', 'blue-Div': item.key=='blue', 'gray-Div': item.key=='gray' }">
-                <div class="round">101</div>
+            <div v-for="(item,index) in filterRoomListData" :key="index" :class="{ 'yellow-Div': item.key=='yellow', 'blue-Div': item.key=='blue', 'gray-Div': item.key=='gray' }">
+                <div class="round">{{item.num}}</div>
                 <div>标准间</div>
                 <div>
                     <i v-if="item.key!='gray'" class="el-icon-user"></i>
@@ -57,9 +57,9 @@
       </div>
       <div v-if="showRight" class="right">
         <div class="r-top">
-            <div :class="{'selected':this.selectText=='入住'}" @click="selected('入住')">入住</div>
-            <div :class="{'selected':this.selectText=='预定'}" @click="selected('预定')">预定</div>
-            <div :class="{'selected':this.selectText=='退房/续租'}" @click="selected('退房/续租')">退房/续租</div>
+            <div :class="{'selected-y':this.selectText=='入住'}" @click="selected('入住')">入住</div>
+            <div :class="{'selected-y':this.selectText=='预定'}" @click="selected('预定')">预定</div>
+            <div :class="{'selected-y':this.selectText=='退房/续租'}" @click="selected('退房/续租')">退房/续租</div>
         </div>
         <div class="detailsTitle">
             {{this.detailsTitle}}
@@ -67,7 +67,9 @@
         <div style="overflow-y:scroll;height:700px">
             <div class="r-list" v-for="(item,index) in rightListData" :key="index">
                 <div class="img-div">
-                    <img src="@/assets/images/dcf.jpg" alt="">
+                    <img v-if="item.type=='标准间'" src="@/assets/images/bzj.jpg" alt="">
+                    <img v-if="item.type=='大床房'" src="@/assets/images/dcf.jpg" alt="">
+                    <img v-if="item.type=='套房'" src="@/assets/images/tf.jpg" alt="">
                 </div>
                 <div class="r-list-right">
                     <div><span>{{item.num}}</span><span class="ml20">{{item.type}}</span></div>
@@ -75,29 +77,7 @@
                     <div><button class="xz">续住</button><button class="tf">退房</button></div>
                 </div>
             </div>
-            <!-- <div class="r-list">
-                <div class="img-div">
-                    <img src="@/assets/images/dcf.jpg" alt="">
-                </div>
-                <div class="r-list-right">
-                    <div><span>101</span><span class="ml20">大床房</span></div>
-                    <div>张王两人</div>
-                    <div><button class="xz">续住</button><button class="tf">退房</button></div>
-                </div>
-            </div>
-            <div class="r-list">
-                <div class="img-div">
-                    <img src="@/assets/images/dcf.jpg" alt="">
-                </div>
-                <div class="r-list-right">
-                    <div><span>101</span><span class="ml20">大床房</span></div>
-                    <div>张王两人</div>
-                    <div><button class="xz">续住</button><button class="tf">退房</button></div>
-                </div>
-            </div> -->
         </div>
-
-    
       </div>
   </div>
 </template>
@@ -110,46 +90,46 @@
                 msg: 'Welcome to Your Vue.js App',
                 selectText:'退房/续租',
                 detailsTitle:'已入住房间',
-                pData:[
-                    {name:'黄金糕3',id:'1'},
-                    {name:'狮子头3',id:'2'},
-                    {name:'螺蛳粉3',id:'3'},
-                ],
                 arrowShow:true,
                 showRight:true,
                 options: [{
-                    value: '选项1',
-                    label: '黄金糕'
+                    value: '1',
+                    label: '标准间'
                 }, {
-                    value: '选项2',
-                    label: '双皮奶'
+                    value: '2',
+                    label: '大床房'
                 }, {
-                    value: '选项3',
-                    label: '蚵仔煎'
-                }, {
-                    value: '选项4',
-                    label: '龙须面'
-                }, {
-                    value: '选项5',
-                    label: '北京烤鸭'
+                    value: '3',
+                    label: '套房'
                 }],
                 value: '',
                 input:'',
                 roomListData:[
-                    {key:"yellow"},{key:"blue"},{key:"yellow"},{key:"yellow"},{key:"gray"},{key:"blue"},{key:"yellow"},{key:"blue"},
-                    {key:"blue"},{key:"gray"},{key:"gray"},{key:"yellow"},{key:"blue"},{key:"gray"},{key:"yellow"},{key:"gray"},
-                    {key:"yellow"},{key:"blue"},{key:"blue"},{key:"gray"},{key:"yellow"},{key:"yellow"},{key:"blue"},{key:"yellow"},
+                    {key:"yellow",num:"203"},{key:"blue",num:"102"},{key:"yellow",num:"302"},{key:"yellow",num:"102"},{key:"gray",num:"501"},
+                    {key:"blue",num:"102"},{key:"yellow",num:"302"},{key:"blue",num:"102"},
+                    {key:"blue",num:"308"},{key:"gray",num:"783"},{key:"gray",num:"138"},{key:"yellow",num:"509"},{key:"blue",num:"102"},
+                    {key:"gray",num:"039"},{key:"yellow",num:"603"},{key:"gray",num:"102"},
+                    {key:"yellow",num:"102"},{key:"blue",num:"102"},{key:"blue",num:"609"},{key:"gray",num:"302"},{key:"yellow",num:"102"},
+                    {key:"yellow",num:"109"},{key:"blue",num:"452"},{key:"yellow",num:"209"},
+                ],
+                filterRoomListData:[
+                    {key:"yellow",num:"203"},{key:"blue",num:"102"},{key:"yellow",num:"302"},{key:"yellow",num:"102"},{key:"gray",num:"501"},
+                    {key:"blue",num:"102"},{key:"yellow",num:"302"},{key:"blue",num:"102"},
+                    {key:"blue",num:"308"},{key:"gray",num:"783"},{key:"gray",num:"138"},{key:"yellow",num:"509"},{key:"blue",num:"102"},
+                    {key:"gray",num:"039"},{key:"yellow",num:"603"},{key:"gray",num:"102"},
+                    {key:"yellow",num:"102"},{key:"blue",num:"102"},{key:"blue",num:"609"},{key:"gray",num:"302"},{key:"yellow",num:"102"},
+                    {key:"yellow",num:"109"},{key:"blue",num:"452"},{key:"yellow",num:"209"},
                 ],
                 rightListData:[
-                    {type:'标准间',num:'301',details:'yan王两人',status:'退房/续住'},
-                    {type:'套房',num:'203',details:'yan王两人',status:'退房/续住'},
-                    {type:'大床房',num:'105',details:'yan王两人',status:'退房/续住'},
-                    {type:'套房',num:'104',details:'yan王两人',status:'退房/续住'},
-                    {type:'标准间',num:'103',details:'yan王两人',status:'退房/续住'},
-                    {type:'大床房',num:'301',details:'yan王两人',status:'退房/续住'},
-                    {type:'标准间',num:'201',details:'yan王两人',status:'退房/续住'},
-                    {type:'套房',num:'101',details:'yan王两人',status:'退房/续住'},
-                    {type:'标准间',num:'202',details:'yan王两人',status:'退房/续住'},
+                    {type:'标准间',num:'301',details:'A,B两人',status:'退房/续住'},
+                    {type:'套房',num:'203',details:'C,D两人',status:'退房/续住'},
+                    {type:'大床房',num:'105',details:'AD,D两人',status:'退房/续住'},
+                    {type:'套房',num:'104',details:'SC,V两人',status:'退房/续住'},
+                    {type:'标准间',num:'103',details:'ADC两人',status:'退房/续住'},
+                    {type:'大床房',num:'301',details:'A王两人',status:'退房/续住'},
+                    {type:'标准间',num:'201',details:'C王两人',status:'退房/续住'},
+                    {type:'套房',num:'101',details:'B3两人',status:'退房/续住'},
+                    {type:'标准间',num:'202',details:'RF王两人',status:'退房/续住'},
                 ],
             }
         },
@@ -178,6 +158,17 @@
                     this.selectText = '退房/续租';
                     this.detailsTitle = '已入住房间';
                 }
+            },
+            // 房间号搜索
+            inpChange(){
+                // console.log(this.input);
+                this.filterRoomListData = this.roomListData.filter((item)=>{
+                    return (item.num.indexOf(this.input) != -1)
+                })
+            },
+            //下拉菜单
+            selectChange(value){
+                console.log(value)
             }
         },
     }

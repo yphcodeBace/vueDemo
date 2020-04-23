@@ -44,9 +44,9 @@
                 muted: false, // 是否静音
                 controls: true,
                 fluid: false, // 宽高自适应
-                techOrder: ["flash"],
+                // techOrder: ["flash"],
                 sources: [{
-                    src: 'rtmp://172.31.99.89:1935/live/1',
+                    src: 'rtmp://172.31.99.144:1935/live/1',
                     type: 'rtmp'
                 }]
             },

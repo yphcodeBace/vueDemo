@@ -127,7 +127,7 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     overflow-y: scroll;
-    height: 600px;
+    max-height: 600px;
 }
 .roomList > div{
     position: relative;
@@ -275,11 +275,11 @@
     cursor: pointer;
 }
 /* 选中效果 */
-.selected{
+.selected-y{
     position: relative;
     color: #1CBCFF;
 }
-.selected::after{
+.selected-y::after{
     position: absolute;
     content: '';
     width: 12px;
