@@ -29,6 +29,11 @@
       var checkName = (rule, value, callback) => {
         if (!value) {
           return callback(new Error('用户名不能为空'));
+        } else{
+            if (this.ruleForm.username != 'yanpeihao') {
+                callback(new Error('用户名不存在'));
+            }
+            callback();
         }
         setTimeout(() => {
             if (value.length < 6) {
@@ -42,9 +47,9 @@
         if (value === '') {
           callback(new Error('请输入密码'));
         } else {
-        //   if (this.ruleForm.checkPass !== '') {
-        //     this.$refs.ruleForm.validateField('checkPass');
-        //   }
+          if (this.ruleForm.pass != 'nishengri') {
+            callback(new Error('用户名或密码错误'));
+          }
           callback();
         }
       };
@@ -89,7 +94,7 @@
         height: 100vh;
         background: url('../assets/images/bg.jpg') no-repeat center center;
         background-size: cover;
-        padding-top: 1px;
+        overflow: hidden;
     }
     .login >>> .el-form{
         /* border: 1px solid red; */
