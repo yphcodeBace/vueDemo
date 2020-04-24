@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Breadcrumb />
     <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
       <el-form-item label="密码" prop="pass">
         <el-input type="password" v-model="ruleForm2.pass" auto-complete="off"></el-input>
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+  import Breadcrumb from '@/pages/Breadcrumb';
   export default {
     name: 'Str',
     mounted () {
@@ -29,6 +31,9 @@
       console.log(str.split(' '))
       console.log(str.substr(1,2))
       console.log(str.substring(1,7))
+    },
+    components:{
+      Breadcrumb:Breadcrumb,
     },
     data(){
       var checkAge = (rule, value, callback) => {

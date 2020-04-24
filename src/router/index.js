@@ -47,14 +47,30 @@ export default new Router({
       name: 'Arr',
       component: Arr,
       meta: {
-        keepAlive: true
+        keepAlive: true,
+        breadcrumb:[
+          {
+            name:'Arr',
+            path:'/Arr'
+          }
+        ]
       }
     },{
       path: '/Str',
       name: 'Str',
       component: Str,
       meta: {
-        keepAlive: true
+        keepAlive: true,
+        breadcrumb:[
+          {
+            name:'Arr',
+            path:'/Arr'
+          },
+          {
+            name:'Str',
+            path:'/Str'
+          }
+        ]
       }
     },{
       path: '/Homestay',
