@@ -8,12 +8,27 @@ import Homestay from '@/pages/Homestay'
 import BFC from '@/pages/BFC'
 import Video from '@/pages/Video'
 import Login from '@/pages/Login'
+import Breadcrumb from '@/pages/Breadcrumb'
+
+//解决路由重复push报错
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location, onResolve, onReject) {
+  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+  return originalPush.call(this, location).catch(err => err)
+}
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
+      path: '/Login',
+      name: 'Login',
+      component: Login,
+      meta: {
+        keepAlive: false
+      }
+    },{
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld,
@@ -63,11 +78,25 @@ export default new Router({
         keepAlive: true
       }
     },{
-      path: '/Login',
-      name: 'Login',
-      component: Login,
+      path: '/Breadcrumb',
+      name: 'Breadcrumb',
+      component: Breadcrumb,
       meta: {
-        keepAlive: false
+        keepAlive: true,
+        breadcrumb:[
+          {
+            name:'Arr',
+            path:'/Arr'
+          },
+          {
+            name:'Str',
+            path:'/Str'
+          },
+          {
+            name:'Breadcrumb',
+            path:'/Breadcrumb'
+          }
+        ]
       }
     }
   ]

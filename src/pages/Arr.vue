@@ -1,5 +1,6 @@
 <template>
   <div class="arrPage">
+    <Breadcrumb />
     name:<input v-model="name"></input>
     sex:<input v-model="sex"></input>
     <button @click="add">添加</button>
@@ -11,6 +12,7 @@
 </template>
 
 <script>
+  import Breadcrumb from '@/pages/Breadcrumb';
   export default {
     name: 'Arr',
     mounted(){
@@ -68,6 +70,9 @@
       immediate: true,//immediate表示在watch中首次绑定的时候，是否执行handler，值为true则表示在watch中声明的时候，就立即执行handler方法，值为false，则和一般使用watch一样，在数据发生变化的时候才执行handler。
       deep: true,//当需要监听一个对象的改变时，普通的watch方法无法监听到对象内部属性的改变，只有data中的数据才能够监听到变化，此时就需要deep属性对对象进行深度监听
     },
+    components:{
+      Breadcrumb:Breadcrumb,
+    }
   }
 </script>
 

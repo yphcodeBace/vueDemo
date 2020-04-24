@@ -1,6 +1,6 @@
 <template>
     <div class="indexPage">
-<!--      <Label :yph="responseData"></Label>-->
+      <!-- <Breadcrumb /> -->
       <component v-for="(item,index) in componentData"
                  :key="index"
                  :is="item.component"
@@ -12,18 +12,13 @@
 </template>
 
 <script>
-  import Label from '../components/Label'
-  import Button from '../components/Button'
+  // import Breadcrumb from '@/pages/Breadcrumb'
   import  axios from '@/http/axios'
   import  { getUserInfo } from '@/http/api'
   let labelJson = require('../json/label.json')
   console.log(labelJson);
   export default {
     name: 'Index',
-    // components: {
-    //   Label: Label,
-    //   Button: Button,
-    // },
     data(){
       return{
         // items:labelJson.item,
@@ -32,7 +27,7 @@
       }
     },
     // components:{
-    //   Label:Label
+    //   Breadcrumb:Breadcrumb
     // },
     created(){
       let vm = this
@@ -59,16 +54,7 @@
     },
     methods:  {
       getData(){
-        // let vm = this
-        // axios.get('http://101.230.217.205:8082/customer/api/itsm/v1/itsmDicRel/getCurrentUserInfo')
-        //   .then(function (response) {
-        //     console.log(response);
-        //     // vm.responseData=data;
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //     // vm.answer = 'Error! Could not reach the API. ' + error
-        //   })
+
       }
     },
     mounted(){
