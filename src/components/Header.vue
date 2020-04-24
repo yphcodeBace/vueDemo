@@ -45,9 +45,6 @@
     computed: {
 
     },
-    mounted() {
-
-    },
     methods:{
         menuClick(item){
             // console.log(item)
@@ -66,6 +63,9 @@
                 this.$router.push({
                     path:'/Login'
                 })
+                //清除cookie
+                this.$cookieStore.delCookie('userName');
+                this.$cookieStore.delCookie('pass');
             }).catch(() => {
                 this.$message({
                     type: 'info',

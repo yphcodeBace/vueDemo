@@ -8,6 +8,7 @@ import Homestay from '@/pages/Homestay'
 import BFC from '@/pages/BFC'
 import Video from '@/pages/Video'
 import Login from '@/pages/Login'
+import noPermission from '@/pages/noPermission'
 import Breadcrumb from '@/pages/Breadcrumb'
 
 //解决路由重复push报错
@@ -26,21 +27,32 @@ export default new Router({
       name: 'Login',
       component: Login,
       meta: {
-        keepAlive: false
+        keepAlive: false,
+        requireAuth: false,
+      }
+    },{
+      path: '/noPermission',
+      name: 'noPermission',
+      component: noPermission,
+      meta: {
+        keepAlive: false,
+        requireAuth: false,
       }
     },{
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld,
       meta: {
-        keepAlive: true
+        keepAlive: true,
+        requireAuth: true,
       }
     },{
       path: '/Index',
       name: 'Index',
       component: Index,
       meta: {
-        keepAlive: true
+        keepAlive: true,
+        requireAuth: true,
       }
     },{
       path: '/Arr',
@@ -48,6 +60,7 @@ export default new Router({
       component: Arr,
       meta: {
         keepAlive: true,
+        requireAuth: true,
         breadcrumb:[
           {
             name:'Arr',
@@ -61,6 +74,7 @@ export default new Router({
       component: Str,
       meta: {
         keepAlive: true,
+        requireAuth: true,
         breadcrumb:[
           {
             name:'Arr',
@@ -77,21 +91,24 @@ export default new Router({
       name: 'Homestay',
       component: Homestay,
       meta: {
-        keepAlive: true
+        keepAlive: true,
+        requireAuth: true,
       }
     },{
       path: '/BFC',
       name: 'BFC',
       component: BFC,
       meta: {
-        keepAlive: true
+        keepAlive: true,
+        requireAuth: true,
       }
     },{
       path: '/Video',
       name: 'Video',
       component: Video,
       meta: {
-        keepAlive: true
+        keepAlive: true,
+        requireAuth: true,
       }
     },{
       path: '/Breadcrumb',
@@ -99,6 +116,7 @@ export default new Router({
       component: Breadcrumb,
       meta: {
         keepAlive: true,
+        requireAuth: true,
         breadcrumb:[
           {
             name:'Arr',

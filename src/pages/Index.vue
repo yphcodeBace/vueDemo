@@ -58,7 +58,11 @@
       }
     },
     mounted(){
-      console.log(this.componentData);
+      //获取cookie
+      console.log(this.$cookieStore.getCookie('userName'));
+      // this.$cookieStore.getCookie('userName');
+      // this.$cookieStore.getCookie('pass');
+      // console.log(this.componentData);
     },
   }
 </script>
