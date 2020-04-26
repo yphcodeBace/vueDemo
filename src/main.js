@@ -23,12 +23,22 @@ router.beforeEach((to, from, next) => {
         next({
           path: '/noPermission',
         })
-     }
+      }
   }
   else {
       next();
   }
 });
+
+// var timer;
+// router.afterEach((to, from) => {
+//   timer = setInterval(function(){
+//     console.log(getCookie("userName"))
+//     if(getCookie("userName")){
+//       clearInterval(timer);
+//     }
+//   },30000)
+// });
 
 /* eslint-disable no-new */
 new Vue({
