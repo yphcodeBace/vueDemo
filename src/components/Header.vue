@@ -14,7 +14,7 @@
                  :key="index"
                  @click.native="menuClick(item)"
                 >
-                    {{item.name}}
+                    <router-link :to="item.url">{{item.name}}</router-link>
                 </el-dropdown-item>
             </el-dropdown-menu>
         </el-dropdown>
@@ -34,11 +34,15 @@
     data(){
         return{
             input:'',
-            selected:'上海',
+            selected:'首页',
             selectData:[
-                {name:'上海',id:'1'},
-                {name:'北京',id:'2'},
-                {name:'广州',id:'3'},
+                {name:'首页',id:'1',url:'Index'},
+                {name:'Arr',id:'2',url:'Arr'},
+                {name:'Str',id:'3',url:'Str'},
+                {name:'Homestay',id:'3',url:'Homestay'},
+                {name:'BFC',id:'3',url:'BFC'},
+                {name:'Video',id:'3',url:'Video'},
+                {name:'Breadcrumb',id:'3',url:'Breadcrumb'},
             ]
         }
     },
@@ -120,6 +124,7 @@
     /* 下拉菜单 */
     .el-dropdown{
         font-size: 18px;
+        color: red;
     }
     .el-dropdown-link {
         cursor: pointer;
@@ -129,6 +134,13 @@
         font-size: 16px;
         color: #FFFFFF;
     }
+    .el-dropdown-menu__item a{
+        color: black;
+        text-decoration: none;
+        /* border: 1px solid red; */
+        width: 100%;
+        display: inline-block;
+    }   
     /* 输入框 */
     .el-input{
         width: 15%;
@@ -142,5 +154,10 @@
     .el-button--text{
         color: #FFFFFF;
         font-size: 16px;
+    }
+</style>
+<style>
+    .yphAdd{
+        border: 1px solid red;
     }
 </style>

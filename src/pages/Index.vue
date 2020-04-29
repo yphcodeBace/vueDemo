@@ -6,7 +6,7 @@
                  :is="item.component"
                  :responseData="responseData"
                  :data="item.itemData"
-                 v-if="JSON.stringify(responseData)!='{}'">
+                 :v-if="JSON.stringify(responseData)!='{}'">
       </component>
     </div>
 </template>
@@ -23,21 +23,25 @@
       return{
         // items:labelJson.item,
         componentData:[],
-        responseData:{},
+        responseData:{
+          user:{
+            username:"yph"
+          }
+        },
       }
     },
     // components:{
     //   Breadcrumb:Breadcrumb
     // },
     created(){
-      let vm = this
+      // let vm = this
       //调接口
-      getUserInfo().then(data=>{
-        console.log(data);
-        vm.responseData=data;
-        // vm.responseData=JSON.parse(JSON.stringify(vm.responseData))
-        console.log(vm.responseData);
-      })
+      // getUserInfo().then(data=>{
+      //   console.log(data);
+      //   vm.responseData=data;
+      //   // vm.responseData=JSON.parse(JSON.stringify(vm.responseData))
+      //   console.log(vm.responseData);
+      // })
       for (let i = 0; i <labelJson.item.length ; i++) {
         // let type = labelJson.item[i].type == 'Label' ?'Label':'Button';
         this.componentData.push({
