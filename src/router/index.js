@@ -9,6 +9,7 @@ import BFC from '@/pages/BFC'
 import Video from '@/pages/Video'
 import Login from '@/pages/Login'
 import noPermission from '@/pages/noPermission'
+import null404 from '@/pages/null404'
 import Breadcrumb from '@/pages/Breadcrumb'
 
 //解决路由重复push报错
@@ -22,6 +23,15 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '*',
+      name: '404',
+      component: null404,
+      meta: {
+        keepAlive: false,
+        requireAuth: false,
+      }
+    },
     {
       path: '/Login',
       name: 'Login',
