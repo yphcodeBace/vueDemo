@@ -24,15 +24,6 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '*',
-      name: '404',
-      component: null404,
-      meta: {
-        keepAlive: false,
-        requireAuth: false,
-      }
-    },
-    {
       path: '/Login',
       name: 'Login',
       component: Login,
@@ -142,6 +133,14 @@ export default new Router({
           }
         ]
       }
-    }
+    },{
+      path: '*',
+      name: '404',
+      component: null404,
+      meta: {
+        keepAlive: false,
+        requireAuth: false,
+      }
+    },
   ]
 })

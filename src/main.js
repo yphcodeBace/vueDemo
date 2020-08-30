@@ -14,6 +14,7 @@ Vue.prototype.$axios = axios
 Vue.use(ElementUI)
 
 router.beforeEach((to, from, next) => {
+  // console.log(to.matched)
   // console.log(to.matched.some(record => record.meta.requireAuth));
   if (to.matched.some(record => record.meta.requireAuth)){ // 判断该路由是否需要登录权限
       if (getCookie("userName")) { // 判断当前的token是否存在
